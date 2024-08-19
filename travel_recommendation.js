@@ -1,87 +1,52 @@
 // URL of the JSON file
-const url = 'path/to/travel_recommendation_api.json'; // Replace with the actual path to your JSON file
+const url = 'travel_recommendation_api.json'; // Replace with the actual path to your JSON file
 
-// Fetch the JSON data
-fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
-    }
-    return response.json(); // Parse the JSON data
-  })
-  .then(data => {
-    console.log(data); // Log the data to the console
-    // You can also process the data here if needed
-    // For example, you might want to display the names and images
-    data.places.forEach(place => {
-      console.log('Place Name:', place.name);
-      console.log('Image URL:', place.imageUrl); // Ensure you have your own images for these URLs
-    });
-  })
-  .catch(error => {
-    console.error('There has been a problem with your fetch operation:', error);
-  });
-
-
-
-
-  // search.js
-
-// Define your keywords and their associated data
-const keywords = {
-    beach: ["Beautiful beaches to visit", "Top beach resorts", "Best beaches for surfing"],
-    temple: ["Famous temples to explore", "Historic temples", "Temple architecture"],
-    country: ["Top travel destinations by country", "Cultural experiences in different countries", "Country-specific travel tips"]
-};
-
-// Function to perform the search
-function performSearch(query) {
-    // Convert query to lowercase for case-insensitive matching
-    const normalizedQuery = query.toLowerCase();
-
-    // Get results based on the query
-    const results = Object.keys(keywords).filter(key => normalizedQuery.includes(key)).map(key => {
-        return {
-            keyword: key,
-            descriptions: keywords[key]
-        };
-    });
-
-    // Display results
-    displayResults(results);
-}
-
-// Function to display results on the page
-function displayResults(results) {
-    const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = ''; // Clear previous results
-
-    if (results.length === 0) {
-        resultsContainer.innerHTML = '<p>No results found.</p>';
-        return;
-    }
-
-    results.forEach(result => {
-        const keywordSection = document.createElement('div');
-        keywordSection.classList.add('result-item');
-        
-        const keywordTitle = document.createElement('h3');
-        keywordTitle.textContent = `Results for "${result.keyword}":`;
-        keywordSection.appendChild(keywordTitle);
-
-        const descriptionList = document.createElement('ul');
-        result.descriptions.forEach(description => {
-            const listItem = document.createElement('li');
-            listItem.textContent = description;
-            descriptionList.appendChild(listItem);
+    // Fetch the JSON data
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Add event listener for the search button
+        document.getElementById('searchButton').addEventListener('click', () => {
+          const query = document.getElementById('searchInput').value.toLowerCase();
+          const results = data.places.find(place => place.keyword === query);
+          displayResults(results);
         });
 
-        keywordSection.appendChild(descriptionList);
-        resultsContainer.appendChild(keywordSection);
-    });
-}
+        // Function to display results on the page
+        function displayResults(results) {
+          const resultsContainer = document.getElementById('results');
+          resultsContainer.innerHTML = ''; // Clear previous results
 
-// Add event listener for the search button
-document.getElementById('searchButton').addEventListener('click', () => {
-    const query = document.getElementById('searchInput').value;
-    performSearch(query);
+          if (!results) {
+            resultsContainer.innerHTML = '<p>No results found for your search.</p>';
+            return;
+          }
+
+          results.recommendations.forEach(recommendation => {
+            const recommendationDiv = document.createElement('div');
+            recommendationDiv.classList.add('recommendation');
+
+            const title = document.createElement('h3');
+            title.textContent = recommendation.name;
+            recommendationDiv.appendChild(title);
+
+            const image = document.createElement('img');
+            image.src = recommendation.imageUrl;
+            recommendationDiv.appendChild(image);
+
+            const description = document.createElement('p');
+            description.textContent = recommendation.description;
+            recommendationDiv.appendChild(description);
+
+            resultsContainer.appendChild(recommendationDiv);
+          });
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
