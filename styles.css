@@ -1,0 +1,136 @@
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #0D1B2A; /* Dark Blue */
+        color: #ffffff;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1B263B; /* Darker Blue */
+        padding: 15px 50px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 18px;
+    }
+
+    .navbar a:hover {
+        color: #4688d7; /* Lighter Blue */
+    }
+
+    /* Hero Section */
+    .hero {
+        position: relative;
+        height: 100vh;
+        background: url('background.jpg') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        color: #ffffff;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Introduction Section */
+    .introduction {
+        padding: 50px;
+        background-color: #F7F9FC; /* Light Background */
+        color: #333333;
+        text-align: center;
+    }
+
+    .introduction h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: #0D1B2A;
+    }
+
+    .introduction p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Contact Form */
+    .contact-container {
+        background: #1B263B; /* Darker Blue */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .contact-container h1 {
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    .form-group button {
+        background-color: #007bff; /* Primary Blue */
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .form-group button:hover {
+        background-color: #0056b3; /* Darker Blue */
+    }
+
