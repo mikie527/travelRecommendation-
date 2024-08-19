@@ -14,10 +14,13 @@
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact Us</a>
 
-    <!-- Search bar and buttons -->
-    <input type="text" placeholder="Search for recommendations...">
-    <button type="button">Search</button>
-    <button type="reset" class="reset-button">Reset</button>
+    <div id="search_inside_nav">
+                <div><input type="text" id="search_input" placeholder="Enter a destination or Keyword" ></div>
+                <div id="search_btn" onclick="recommend()"></div>
+                <div class="nav_btn" ><button onclick="recommend()">Search</button></div>
+                <div class="nav_btn"><button onclick="clearall()">Clear</button></div>
+            </div>
+
 </div>
 
 <div class="hero">
@@ -45,5 +48,6 @@
             </form>
         </div>
     </div>
+     <script src="./travel_recommendation.js"></script>
     </body>
     </html>
