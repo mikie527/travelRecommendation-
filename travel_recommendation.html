@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonderful Travels</title>
-    
+ <link rel="stylesheet" href="styles.css">   
 </head>
 <body>
 
@@ -13,12 +13,39 @@
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
-
         <!-- Search bar and buttons -->
-        <input type="text" placeholder="Search for recommendations...">
-        <button type="button">Search</button>
-        <button type="reset" class="reset-button">Reset</button>
-    </div>
 
+        <div id="search_inside_nav">
+                <div><input type="text" id="search_input" placeholder="Enter a destination or Keyword" ></div>
+                <div id="search_btn" onclick="recommend()"><img src="./images/navbar/search_btn.svg" alt=""></div>
+                <div class="nav_btn" ><button onclick="recommend()">Search</button></div>
+                <div class="nav_btn"><button onclick="clearall()">Clear</button></div>
+            </div>
+    </div>
+<div class="hero">
+    <div class="hero-content">
+            <h1>Welcome to TravelBloom</h1>
+            <p>Your ultimate guide to exploring the world! Whether you're seeking hidden gems in bustling cities or serene escapes in nature, our platform offers expert reviews and recommendations for the best places to visit. Discover must-see destinations, read authentic traveler reviews, and get insider tips to make your next adventure unforgettable. Whether you're planning a weekend getaway or a grand world tour, TravelBloom is here to help you find your perfect travel experiences. Happy exploring!</p>
+            <p>Discover authentic reviews and recommendations for your next adventure.</p>
+        </div>
+</div>
+
+     <div id="home_page_under_nav">
+            <div id="under_nav_left_side">
+                <div id="line_image_home_page"><img src="./images/home_page/line_home_page.png" alt=""></div>
+                <div> <div  class="social_media_icons_home_page"><a href=""><img src="./images/home_page/twitter_logo.svg" alt=""></a></div>
+                <div class="social_media_icons_home_page"><a href=""><img src="./images/home_page/facebook_logo.svg" alt=""></a></div>
+                <div class="social_media_icons_home_page"><a href=""><img src="./images/home_page/insta_logo.svg" alt=""></a></div>
+                <div class="social_media_icons_home_page"><a href=""><img src="./images/home_page/youtube_logo.svg" alt=""></a></div></div>
+            </div>
+            <div id="home_page_full_right_side">
+                <div id="large_heading_home_page">Explore Dream Destination</div>
+                <div id="qoute_home_page">It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonde.</div>
+                <div> <button id="book_btn">Book Now</button></div>
+            </div>
+            <div> <div id="result_under_search"></div> </div>
+        </div>
+    </div>
+    <script src="./travel_recommendation.js"></script>
 </body>
 </html>
